@@ -21,3 +21,8 @@ jobs:
       run: dotnet restore
     - name: publish
       run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
+    - name: Upload cityApp build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cityApp1
+        path: D:\a\cityApp\cityApp\cityApp\bin\Release\net5.0-windows\win-x64\publish\

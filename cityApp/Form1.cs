@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -72,9 +73,23 @@ namespace cityApp
                 // var deserializedCities = JsonConvert.DeserializeObject<Data>(body);
 
                 // citystring = deserializedCities.city;
-                
 
-                txtCityResult.Text = (body);
+                // DataSet dataSet = JsonConvert.DeserializeObject<DataSet>(body);
+                // DataTable dataTable = dataSet.Tables["data"];
+                // cityApistring = "";
+                // foreach (DataRow row in dataTable.Rows)
+                // {
+                // Console.WriteLine(row["name"] + " - " + row["population"]);
+                // cityApistring += row["name"] + " - " + row["population"] + "\n";
+                // }
+                // txtCityResult.Text = (cityApistring);
+
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(body);
+                string json1 = Convert.ToString(json);
+                // dynamic json2 = Newtonsoft.Json.JsonConvert.DeserializeObject(json.data);
+                // string json3 = Convert.ToString(json2);
+
+                txtCityResult.Text = (json1);
 
             }
         }
@@ -92,6 +107,7 @@ namespace cityApp
         }
 
         public string citystring;
+        //private string cityApistring;
 
         private void btnShowSavedCities_Click(object sender, System.EventArgs e)
         {
